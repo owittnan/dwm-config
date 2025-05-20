@@ -18,17 +18,22 @@ static char normfgcolor[]           = "#bbbbbb";
 static char selfgcolor[]            = "#eeeeee";
 static char selbordercolor[]        = "#005577";
 static char selbgcolor[]            = "#005577";
-static const char col_black[]       = "#000000";
-static const char col_red[]         = "#ff0000";
-static const char col_yellow[]      = "#ffff00";
-static const char col_white[]       = "#ffffff";
+static char col_black[]       = "#000000";
+static char col_red[]         = "#ff0000";
+static char col_yellow[]      = "#ffff00";
+static char col_white[]       = "#ffffff";
 
 static char *colors[][3] = {
        /*                 fg           bg           border   */
        [SchemeNorm]   = { normfgcolor, normbgcolor, normbordercolor },
        [SchemeSel]    = { selfgcolor,  selbgcolor,  selbordercolor  },
 	   [SchemeWarn]   = { col_black,   col_yellow,  col_red },
-	   [SchemeUrgent] = { col_white,   col_red,     col_red}
+	   [SchemeUrgent] = { col_white,   col_red,     col_red},
+	   [SchemeStatus] = { normfgcolor, normbgcolor, "#000000" },
+	   [SchemeTagsNorm] = { normfgcolor, normbgcolor, "#000000" },
+	   [SchemeInfoNorm] = { normfgcolor, normbgcolor, "#000000" },
+	   [SchemeTagsSel] = { selfgcolor, selbgcolor, "#000000" },
+	   [SchemeInfoSel] = { selfgcolor, selbgcolor, "#000000" },
 	   
 };
 
@@ -86,7 +91,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { NULL };
 static const char *termcmd[]  = { "st", NULL };
 
 static const Key keys[] = {
@@ -163,4 +168,3 @@ static const Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
-
